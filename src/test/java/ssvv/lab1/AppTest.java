@@ -1,8 +1,11 @@
+package ssvv.lab1;
+
 import domain.Student;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.NullEnum;
 import repository.CrudRepository;
 import repository.NotaXMLRepo;
 import repository.StudentXMLRepo;
@@ -16,7 +19,7 @@ import view.UI;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class TestAddStudent {
+public class AppTest {
     StudentValidator studentValidator = new StudentValidator();
     TemaValidator temaValidator = new TemaValidator();
     String filenameStudent = "fisiere/Studenti.xml";
@@ -41,7 +44,7 @@ public class TestAddStudent {
     public void testAddStudentNullId(){
         Student studentNullId = new Student(null, "ana", 933, "ana@email.com");
 
-        assertThrows(ValidationException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             service.addStudent(studentNullId);
         });
     }
