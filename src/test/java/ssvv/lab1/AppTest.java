@@ -70,7 +70,7 @@ public class AppTest
     public void testAddStudentNullId(){
         Student studentNullId = new Student(null, "ana", 933, "ana@email.com");
 
-        assertThrows(NullPointerException.class, () -> {
+        assertThrows(ValidationException.class, () -> {
             service.addStudent(studentNullId);
         });
     }
@@ -180,7 +180,7 @@ public class AppTest
         });
     }
 
-    //TC18
+    //TC16
     public void testAddStudentWithDifferentIds(){
         Student student1 = new Student("1009", "Andrei", 933, "maria@email.com");
         Student student2 = new Student("1010", "Andrei", 933, "maria@email.com");
@@ -189,15 +189,14 @@ public class AppTest
         Assertions.assertNull(service.addStudent(student2));
     }
 
-    //TC19
-//    @Test
+    //TC17
 //    public void testAddStudentWithSameIds(){
 //        Student student1 = new Student("1011", "Andrei", 933, "maria@email.com");
 //        Student student2 = new Student("1011", "Andrei", 933, "maria@email.com");
 //
 //        Assertions.assertNull(service.addStudent(student1));
-//        assertThrows(ValidationException.class, () -> {
-//            service.addStudent(student2);
-//        });
+////        assertThrows(Exception.class, () -> {
+////            service.addStudent(student2);
+////        });
 //    }
 }
