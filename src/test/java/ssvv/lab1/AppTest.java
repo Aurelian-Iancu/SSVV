@@ -1,6 +1,7 @@
 package ssvv.lab1;
 
 import domain.Student;
+import domain.Tema;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -199,4 +200,45 @@ public class AppTest
 ////            service.addStudent(student2);
 ////        });
 //    }
+
+    ////////////////////////////////////WBT TestCases
+    public void testAddAssignmentEmptyId(){
+        Tema temaEmptyId = new Tema("", "descriere", 12, 12);
+
+        assertThrows(ValidationException.class, () -> {
+            service.addTema(temaEmptyId);
+        });
+    }
+
+    public void testAddAssignmentEmptyDescription(){
+        Tema temaDescriptionId = new Tema("1", "", 12, 12);
+
+        assertThrows(ValidationException.class, () -> {
+            service.addTema(temaDescriptionId);
+        });
+    }
+
+    public void testAddAssignmentWrongDeadline(){
+        Tema temaWrongDeadline = new Tema("1", "descriere", 15, 12);
+
+        assertThrows(ValidationException.class, () -> {
+            service.addTema(temaWrongDeadline);
+        });
+    }
+
+    public void testAddAssignmentWrongPrimire(){
+        Tema temaWrongDeadline = new Tema("1", "descriere", 12, 15);
+
+        assertThrows(ValidationException.class, () -> {
+            service.addTema(temaWrongDeadline);
+        });
+    }
+
+    public void testAddGood(){
+        Tema temaGoodAssignment = new Tema("125", "descriere", 12, 12);
+
+        Assertions.assertNull(service.addTema(temaGoodAssignment));
+    }
+
+
 }
