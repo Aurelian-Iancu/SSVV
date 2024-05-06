@@ -190,17 +190,6 @@ public class AppTest
         Assertions.assertNull(service.addStudent(student2));
     }
 
-    //TC17
-//    public void testAddStudentWithSameIds(){
-//        Student student1 = new Student("1011", "Andrei", 933, "maria@email.com");
-//        Student student2 = new Student("1011", "Andrei", 933, "maria@email.com");
-//
-//        Assertions.assertNull(service.addStudent(student1));
-////        assertThrows(Exception.class, () -> {
-////            service.addStudent(student2);
-////        });
-//    }
-
     ////////////////////////////////////WBT TestCases
     public void testAddAssignmentEmptyId(){
         Tema temaEmptyId = new Tema("", "descriere", 12, 12);
@@ -239,6 +228,7 @@ public class AppTest
 
         Assertions.assertNull(service.addTema(temaGoodAssignment));
     }
+
 
 
 }
